@@ -81,9 +81,11 @@ public class MovieActivity extends Activity {
 				Log.d("ERROR",e.getMessage());
 				e.printStackTrace();
 			}
-			ArrayList<Results> movies = new ArrayList<Results>(moviesByGenre.getResults());
-			
-			adapter = new ArrayAdapter<Results>(context,R.layout.list_item,R.id.tvText,movies);
+			ArrayList<String> movies = new ArrayList<String>();
+			for(int i =0;i < moviesByGenre.getResults().size(); i++){
+				movies.add(moviesByGenre.getResults().get(i).getTitle().toUpperCase().toString());
+			}
+			adapter = new ArrayAdapter<String>(context,R.layout.list_item,R.id.tvText,movies);
 			adapter.notifyDataSetChanged();
 			lvMovies.setAdapter(adapter);
 		}
