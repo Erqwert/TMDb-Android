@@ -3,7 +3,6 @@ package com.mjavacam.tmdb;
 import java.io.IOException;
 import java.util.ArrayList;
 
-import org.apache.http.message.BasicNameValuePair;
 import org.mjavacam.wrapper.tmdb.TMDb;
 import org.mjavacam.wrapper.tmdb.collections.GenreList;
 import org.mjavacam.wrapper.tmdb.movie.Genre;
@@ -12,7 +11,6 @@ import android.annotation.TargetApi;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
-import android.content.res.ColorStateList;
 import android.net.TrafficStats;
 import android.os.AsyncTask;
 import android.os.Build;
@@ -34,6 +32,7 @@ import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+@SuppressWarnings("deprecation")
 public class MainActivity extends Activity implements OnClickListener {
 
 	ArrayAdapter<Genre> adapter;
@@ -48,7 +47,6 @@ public class MainActivity extends Activity implements OnClickListener {
 		
 		lvGenres.setOnItemClickListener(new OnItemClickListener() {
 
-			@SuppressWarnings("deprecation")
 			@Override
 			public void onItemClick(AdapterView<?> parent, View view, int position,
 					long id) {
@@ -123,7 +121,6 @@ public class MainActivity extends Activity implements OnClickListener {
 				adapter = new ArrayAdapter<Genre>(context,
 						android.R.layout.simple_list_item_2,genres) {
 
-					@SuppressWarnings("deprecation")
 					@Override
 					public View getView(int position, View convertView,ViewGroup parent) {
 						TwoLineListItem row;

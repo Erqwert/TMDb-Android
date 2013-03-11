@@ -153,14 +153,14 @@ public class TMDb {
 
 		HttpGet post = new HttpGet(url);
 		post.addHeader("accept", "application/json");
-//		post.
+        post.addHeader("Content-length", "0");
 		AndroidHttpClient client = AndroidHttpClient.newInstance("DATA");
 		
 		HttpResponse response = client.execute(post);
-		client.close();
+		
 		HttpEntity httpEntity = response.getEntity();
 		String result = EntityUtils.toString(httpEntity);
-		
+		client.close();
 		return result;
 
 	}
