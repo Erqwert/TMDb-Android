@@ -57,6 +57,8 @@ public class MainActivity extends Activity implements OnClickListener {
 				Intent intent = new Intent(MainActivity.this,MovieActivity.class);
 				intent.putExtra("genreId", genreId);
 				Log.d("LISTVIEW_ID",genreId);
+				startActivity(intent);
+				
 			}
 		});
 	}
