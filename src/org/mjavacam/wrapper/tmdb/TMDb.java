@@ -119,7 +119,7 @@ public class TMDb {
 		// return url;
 		return getJSON(url);
 	}
-
+	
 	/**
 	 * JSON Parser http://stackoverflow.com/questions/10500775/parse-json-from-
 	 * httpurlconnection-object

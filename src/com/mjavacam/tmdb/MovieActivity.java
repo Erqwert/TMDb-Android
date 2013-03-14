@@ -5,7 +5,6 @@ import java.util.ArrayList;
 
 import org.mjavacam.wrapper.tmdb.TMDb;
 import org.mjavacam.wrapper.tmdb.collections.MovieList;
-import org.mjavacam.wrapper.tmdb.collections.Results;
 
 import android.app.Activity;
 import android.content.Context;
@@ -20,7 +19,8 @@ import android.widget.ListView;
 import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-
+// Change the view to gridview
+// Images of the movie and 
 public class MovieActivity extends Activity {
 	Context context;
 	ArrayAdapter<?> adapter;
@@ -33,11 +33,13 @@ public class MovieActivity extends Activity {
 		lvMovies = (ListView) findViewById(R.id.listView1);
 		GetMovieList data = new GetMovieList();
 		data.execute();
+		
 	}
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
+		
 		getMenuInflater().inflate(R.menu.movie, menu);
 		return true;
 	}

@@ -29,6 +29,10 @@
             android:name="com.mjavacam.tmdb.MovieActivity"
             android:label="@string/title_activity_movie" >
         </activity>
+        <activity
+            android:name="com.mjavacam.tmdb.MovieDetailActivity"
+            android:label="@string/title_activity_movie_detail" >
+        </activity>
     </application>
 
 </manifest>
