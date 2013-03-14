@@ -38,7 +38,7 @@ public class MainActivity extends Activity implements OnClickListener {
 	ArrayAdapter<Genre> adapter;
 	ListView lvGenres;
 	Context context;
-
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
