@@ -22,14 +22,13 @@ import com.androidhive.imagefromurl.ImageLoader;
 import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-<<<<<<< HEAD
-// Change the view to gridview
-// Images of the movie and 
-=======
+
+// Change the view to grid view
+// Images of the movie and Added the capability to load image from url
+
 // Change the view to grid view
 // Images of the movie and 
 @SuppressLint("DefaultLocale")
->>>>>>> Added the capability to load image from url
 public class MovieActivity extends Activity {
 	Context context;
 	ArrayAdapter<?> adapter;
@@ -43,15 +42,14 @@ public class MovieActivity extends Activity {
 		GetMovieList data = new GetMovieList();
 		data.execute();
 		
-<<<<<<< HEAD
-=======
+
 		int loader = R.drawable.ic_launcher;
 		
 		ImageView image = (ImageView) findViewById(R.id.image);
 		String url = "";
 		ImageLoader imgLoader = new ImageLoader(context);
 		imgLoader.DisplayImage(url, loader, image);
->>>>>>> Added the capability to load image from url
+// Added the capability to load image from url
 	}
 
 	@Override
