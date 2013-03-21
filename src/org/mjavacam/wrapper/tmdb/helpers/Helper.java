@@ -5,7 +5,10 @@ public final class Helper implements java.io.Serializable {
 	 * Class <code>Helper</code>
 	 */
 	private static final long serialVersionUID = 3312714570884250646L;
-
+	public static final class Images{
+		public static final String BASE_URL = "http://d3gtl9l2a4fn1j.cloudfront.net/t/p/";
+		public static final String SECURE_BASE_URL = "https://d3gtl9l2a4fn1j.cloudfront.net/t/p/";
+	}
 	public static final class PosterSizes {
 		public static final String W92 = "w92";
 		public static final String W154 = "w154";

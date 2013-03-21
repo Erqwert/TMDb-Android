@@ -11,6 +11,8 @@ import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.util.EntityUtils;
+import org.mjavacam.wrapper.tmdb.collections.Results;
+import org.mjavacam.wrapper.tmdb.helpers.Helper;
 
 import android.net.http.AndroidHttpClient;
 
@@ -21,7 +23,7 @@ import android.net.http.AndroidHttpClient;
 public class TMDb {
 	private static String _apiKey;
 	private final String BASE_API_URL = "http://api.themoviedb.org/3/";
-
+	
 	// This is the private fields for the configuration
 
 	public TMDb() {
@@ -120,6 +122,15 @@ public class TMDb {
 		return getJSON(url);
 	}
 	
+	public String GetImageCollection(String id) throws IOException {
+		String url = BASE_API_URL +"movie/" + stringEscape(id)+"/images" +"?api_key="+getApiKey();
+		return getJSON(url);
+	}
+	public String GetMoviePosterUrl(Results movie){
+		//Image image = null;
+		String url = Helper.Images.BASE_URL + Helper.PosterSizes.W92 +movie.getPoster_path();
+		return url;	
+	}
 	/**
 	 * JSON Parser http://stackoverflow.com/questions/10500775/parse-json-from-
 	 * httpurlconnection-object
