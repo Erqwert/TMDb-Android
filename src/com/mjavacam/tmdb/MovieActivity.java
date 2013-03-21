@@ -15,6 +15,8 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
+import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.ListView;
@@ -56,10 +58,9 @@ public class MovieActivity extends Activity {
 	}
 	
 	private class GetMovieList extends AsyncTask<Void, Void, String>{
-
+		TMDb tmdb = new TMDb();
 		@Override
 		protected String doInBackground(Void... params) {
-			TMDb tmdb = new TMDb();
 			String data = "";
 			Intent intent = getIntent();
 			String genreId = intent.getExtras().getString("genreId");
@@ -81,7 +82,7 @@ public class MovieActivity extends Activity {
 			super.onPostExecute(result);
 			ObjectMapper mapper = new ObjectMapper();
 			MovieList moviesByGenre = null;
-			TMDb tmdb = new TMDb();
+			final ArrayList<Results> movies = new ArrayList<Results>();
 			try {
 				if(!result.isEmpty())
 					moviesByGenre = mapper.readValue(result, MovieList.class);
@@ -95,7 +96,7 @@ public class MovieActivity extends Activity {
 				Log.d("ERROR",e.getMessage());
 				e.printStackTrace();
 			}
-			ArrayList<Results> movies = new ArrayList<Results>();
+			
 			movies.addAll(moviesByGenre.getResults());
 			
 			/*
@@ -103,15 +104,24 @@ public class MovieActivity extends Activity {
 			 * 		//movies.add(moviesByGenre.getResults().get(i).getTitle().toString());
 			}*/
 			
-			int loader = R.drawable.ic_launcher;
 			
-			ImageView image = (ImageView) findViewById(R.id.image);
-			String url = tmdb.GetMoviePosterUrl(movies.get(0));
-			ImageLoader imgLoader = new ImageLoader(context);
-			imgLoader.DisplayImage(url, loader, image);
+			// TODO Add the capability to load image from url here
+			adapter = new ArrayAdapter<Results>(context,R.layout.list_item,R.id.tvText,movies){
+				@Override
+				public View getView(int position, View convertView,
+						ViewGroup parent) {
+					// TODO Inflate layout here and lazy load images here
+					int loader = R.drawable.ic_launcher;
+					ImageView image = (ImageView) findViewById(R.id.image);
+					String url = tmdb.GetMoviePosterUrl(movies.get(0));
+					ImageLoader imgLoader = new ImageLoader(context);
+					imgLoader.DisplayImage(url, loader, image);
+					
+					return super.getView(position, convertView, parent);
+				}
+				
+			};
 			
-			// Added the capability to load image from url
-			adapter = new ArrayAdapter<Results>(context,R.layout.list_item,R.id.tvText,movies);
 			adapter.notifyDataSetChanged();
 			lvMovies.setAdapter(adapter);
 		}
