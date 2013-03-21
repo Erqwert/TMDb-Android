@@ -5,9 +5,7 @@ import java.io.OutputStream;
 
 public class Utils {
 
-	public static void CopyStream(InputStream is, OutputStream os)
-
-	{
+	public static void CopyStream(InputStream is, OutputStream os) {
 
 		final int buffer_size = 1024;
 
@@ -17,9 +15,7 @@ public class Utils {
 
 			byte[] bytes = new byte[buffer_size];
 
-			for (;;)
-
-			{
+			for (;;) {
 
 				int count = is.read(bytes, 0, buffer_size);
 

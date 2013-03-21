@@ -97,17 +97,20 @@ public class MovieActivity extends Activity {
 			}
 			ArrayList<Results> movies = new ArrayList<Results>();
 			movies.addAll(moviesByGenre.getResults());
-			/*for(int i =0;i < moviesByGenre.getResults().size(); i++){
-				//movies.add(moviesByGenre.getResults().get(i).getTitle().toString());
-				
+			
+			/*
+			 * for(int i =0;i < moviesByGenre.getResults().size(); i++){
+			 * 		//movies.add(moviesByGenre.getResults().get(i).getTitle().toString());
 			}*/
+			
 			int loader = R.drawable.ic_launcher;
 			
 			ImageView image = (ImageView) findViewById(R.id.image);
-			String url = ;
+			String url = tmdb.GetMoviePosterUrl(movies.get(0));
 			ImageLoader imgLoader = new ImageLoader(context);
 			imgLoader.DisplayImage(url, loader, image);
-	// Added the capability to load image from url
+			
+			// Added the capability to load image from url
 			adapter = new ArrayAdapter<Results>(context,R.layout.list_item,R.id.tvText,movies);
 			adapter.notifyDataSetChanged();
 			lvMovies.setAdapter(adapter);

@@ -9,34 +9,31 @@ import android.graphics.Bitmap;
 
 public class MemoryCache {
 
+	private Map<String, SoftReference<Bitmap>> cache = Collections
+			.synchronizedMap(new HashMap<String, SoftReference<Bitmap>>());
 
+	public Bitmap get(String id) {
 
-	       private  Map<String, SoftReference<Bitmap>> cache=Collections.synchronizedMap(new  
-	   HashMap<String,SoftReference<Bitmap>>()); 
+		if (!cache.containsKey(id))
 
-	       public  Bitmap get(String id){ 
+			return null;
 
-	           if(!cache.containsKey(id)) 
+		SoftReference<Bitmap> ref = cache.get(id);
 
-	              return  null; 
+		return ref.get();
 
-	           SoftReference<Bitmap> ref =cache.get(id); 
+	}
 
-	          return  ref.get();
+	public void put(String id, Bitmap bitmap) {
 
-	       } 
+		cache.put(id, new SoftReference<Bitmap>(bitmap));
 
-	       public void put(String id,Bitmap bitmap){ 
+	}
 
-	          cache.put(id,new SoftReference<Bitmap>(bitmap)); 
+	public void clear() {
 
-	       } 
+		cache.clear();
 
-	       public void clear() { 
-
-	           cache.clear(); 
-
-	       } 
-
+	}
 
 }
