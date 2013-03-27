@@ -82,7 +82,8 @@ public class MovieActivity extends Activity {
 			super.onPostExecute(result);
 			ObjectMapper mapper = new ObjectMapper();
 			MovieList moviesByGenre = null;
-			final ArrayList<Results> movies = new ArrayList<Results>();
+			//final ArrayList<Results> movies = new ArrayList<Results>();
+			ArrayList<String> movies = new ArrayList<String>();
 			try {
 				if(!result.isEmpty())
 					moviesByGenre = mapper.readValue(result, MovieList.class);
@@ -97,30 +98,31 @@ public class MovieActivity extends Activity {
 				e.printStackTrace();
 			}
 			
-			movies.addAll(moviesByGenre.getResults());
-			
-			/*
-			 * for(int i =0;i < moviesByGenre.getResults().size(); i++){
-			 * 		//movies.add(moviesByGenre.getResults().get(i).getTitle().toString());
-			}*/
+			//movies.addAll(moviesByGenre.getResults());
 			
 			
+			  for(int i =0;i < moviesByGenre.getResults().size(); i++){
+			  		movies.add(moviesByGenre.getResults().get(i).getTitle().toString());
+			}
+			
+			adapter = new ArrayAdapter<String>(context, R.layout.list_item,R.id.tvText,movies);
 			// TODO Add the capability to load image from url here
-			adapter = new ArrayAdapter<Results>(context,R.layout.list_item,R.id.tvText,movies){
-				@Override
-				public View getView(int position, View convertView,
-						ViewGroup parent) {
-					// TODO Inflate layout here and lazy load images here
-					int loader = R.drawable.ic_launcher;
-					ImageView image = (ImageView) findViewById(R.id.image);
-					String url = tmdb.GetMoviePosterUrl(movies.get(0));
-					ImageLoader imgLoader = new ImageLoader(context);
-					imgLoader.DisplayImage(url, loader, image);
-					
-					return super.getView(position, convertView, parent);
-				}
-				
-			};
+//			adapter = new ArrayAdapter<Results>(context,R.layout.list_item,R.id.tvText,movies);
+//					{
+//				@Override
+//				public View getView(int position, View convertView,
+//						ViewGroup parent) {
+//					// TODO Inflate layout here and lazy load images here
+//					int loader = R.drawable.ic_launcher;
+//					ImageView image = (ImageView) findViewById(R.id.image);
+//					String url = tmdb.GetMoviePosterUrl(movies.get(0));
+//					ImageLoader imgLoader = new ImageLoader(context);
+//					imgLoader.DisplayImage(url, loader, image);
+//					
+//					return super.getView(position, convertView, parent);
+//				}
+//				
+//			};
 			
 			adapter.notifyDataSetChanged();
 			lvMovies.setAdapter(adapter);

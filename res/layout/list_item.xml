@@ -5,16 +5,10 @@
     android:orientation="vertical" >
 <TextView
         android:id="@+id/tvText"
+        android:textIsSelectable="true"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:text="Loading image"
         android:textSize="24sp" />
-    <ImageView
-        android:id="@+id/image"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="10dip"
-        android:src="@drawable/ic_launcher" />
 
     
 

@@ -25,9 +25,8 @@ public final class R {
     }
     public static final class id {
         public static final int LinearLayout1=0x7f080000;
-        public static final int action_settings=0x7f080006;
+        public static final int action_settings=0x7f080005;
         public static final int btnLoad=0x7f080001;
-        public static final int image=0x7f080005;
         public static final int listView1=0x7f080003;
         public static final int lvGenres=0x7f080002;
         public static final int tvText=0x7f080004;
